@@ -1,0 +1,59 @@
+.checkbox {
+  position: relative;
+  margin-bottom: 45px;
+}
+
+input[type=checkbox] {
+  display: none;
+}
+
+input[type=checkbox] + label:before {
+  content: "";
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  border: 1px solid #A3A3A3;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+input[type=checkbox].error + label:before {
+  border: 1px solid #FE5C73;
+}
+
+input[type=checkbox] + label {
+  padding-left: 36px;
+}
+
+input[type=checkbox] + label:after {
+  content: "";
+  display: block;
+  width: 12px;
+  height: 9px;
+
+  position: absolute;
+  top: 8px;
+  left: 6px;
+  z-index: 1;
+
+  background: url('../shared/assets/icons/check.svg') no-repeat;
+  background-size: 12px 9px;
+  opacity: 0;
+  scale: 0.5;
+
+  transition: all .3s ease;
+}
+
+input[type=checkbox]:checked + label:after {
+  opacity: 1;
+  scale: 1;
+}
+
+input[type=password] {
+  position: relative;
+}

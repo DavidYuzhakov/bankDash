@@ -1,0 +1,25 @@
+.ripple {
+  position: absolute;
+  opacity: 0;
+
+  border-radius: 50%;
+  background-color: #fff;
+
+  width: 40px;
+  height: 40px;
+}
+
+.ripple.active {
+  animation: rippleEffect .9s ease infinite;
+}
+
+@keyframes rippleEffect {
+  0% {
+    opacity: .5;
+    scale: 0;
+  }
+  100% {
+    opacity: 0;
+    scale: 20;
+  }
+}

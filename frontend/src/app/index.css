@@ -1,0 +1,21 @@
+@import './css/reset.css';
+@import './css/ripple.css';
+@import './css/checkbox.css';
+@import './css/utils.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Inter';
+  font-weight: 400;
+  font-size: 16px;
+  color: #232323;
+  background-color: #F5F7FA;
+}
+
+.wrapper {
+  display: flex;
+  width: 100%;
+}
