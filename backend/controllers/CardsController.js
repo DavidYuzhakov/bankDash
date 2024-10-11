@@ -1,8 +1,9 @@
 import CardModel from "../model/Card.js";
 
-const getAllCards = async (_, res) => {
+const getAllCards = async (req, res) => {
   try {
-    const cards = await CardModel.find()
+    const userId = req.userId
+    const cards = await CardModel.find({ user: userId })
     res.status(200).json(cards)
   } catch (err) {
     console.log(err)
@@ -12,4 +13,18 @@ const getAllCards = async (_, res) => {
   }
 }
 
-export default { getAllCards }
+const addCard = async (req, res) => {
+  const { type, name, number, expiration } = req.body
+  const doc = new CardModel({
+    type,
+    number,
+    holder: name,
+    user: req.userId,
+    validThru: expiration
+  })
+
+  const card = await doc.save()
+  res.status(201).json(card)
+}
+
+export default { getAllCards, addCard }

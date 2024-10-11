@@ -1,10 +1,10 @@
 import { Link, Navigate } from "react-router-dom"
 
-import { Alert } from "../../../shared/ui"
-import useAlertStore from "../../../shared/ui/Alert/store"
+import { Alert } from "shared/ui"
+import useAlertStore from "shared/ui/Alert/store"
 
-import { RegisteForm } from "../../../features/auth/ui"
-import { useAuthStore } from "../../../features/auth/model"
+import { RegisteForm } from "features/auth/ui"
+import { useAuthStore } from "features/auth"
 
  
 export function RegisterPage () {

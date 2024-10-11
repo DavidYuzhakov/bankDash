@@ -1,8 +1,8 @@
 import { Link, Navigate } from "react-router-dom"
-import { LoginForm } from "../../../features/auth/ui"
-import { Alert } from "../../../shared/ui"
-import { useAuthStore } from "../../../features/auth/model"
-import useAlertStore from "../../../shared/ui/Alert/store"
+import { LoginForm } from "features/auth/ui"
+import { Alert } from "shared/ui"
+import useAlertStore from "shared/ui/Alert/store"
+import { useAuthStore } from "features/auth"
 
 export function LoginPage () {
   const isAuth = useAuthStore(state => state.isAuth)

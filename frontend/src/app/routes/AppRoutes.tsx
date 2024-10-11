@@ -1,14 +1,42 @@
-
-import { useAuthStore } from "features/auth/model"
+import { useAuthStore } from "features/auth"
 import { HomePage } from "pages/home"
 import { LoginPage, RegisterPage } from "pages/login"
 import { NotFoundPage } from "pages/not-found"
+import { useEffect } from "react"
 import { Navigate, Route, Routes } from "react-router-dom"
+import { check } from "shared/api"
 import { AuthLayout } from "widgets/auth-layout"
 import { MainLayout } from "widgets/main-layout"
+import loading from "shared/assets/images/load.webp"
+
 
 export const AppRoutes = () => {
   const isAuth = useAuthStore((state) => state.isAuth)
+  const setIsAuth = useAuthStore(state => state.setIsAuth)
+
+  console.log(isAuth)
+
+  async function checkAuth () {
+    try {
+      await check()
+      setIsAuth(true)
+    } catch (err) {
+      console.log(err)
+      setIsAuth(false)
+    }
+  }
+
+  useEffect(() => {
+    checkAuth()
+  }, [])
+
+  if (isAuth === undefined) {
+    return (
+      <div className="bg-black/50 w-screen h-screen flex justify-center items-center">
+        <img width={50} src={loading} alt="loading..." />
+      </div>
+    )
+  }
 
   if (!isAuth) {
     return (

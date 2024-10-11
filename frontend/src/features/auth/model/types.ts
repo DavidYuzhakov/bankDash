@@ -10,16 +10,10 @@ export interface RegisterFormValues {
   checkbox: boolean
 }
 
-export interface ResponseData {
-  userId: string
-  token: string
-}
-
 export type State = {
-  isAuth: boolean
+  isAuth: boolean | undefined
 }
 
 export type Action = {
-  login: (token: string) => void
-  logout: () => void
+  setIsAuth: (value: boolean) => void
 }

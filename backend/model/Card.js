@@ -1,13 +1,17 @@
 import { Schema, model } from "mongoose";
 
 const schema = new Schema({
+  type: {
+    type: String,
+    required: true
+  },
   balance: {
     type: Number,
     required: true
   },
   holder: {
     type: String,
-    required: true
+    required: true,
   },
   validThru: {
     type: Date,
@@ -17,6 +21,11 @@ const schema = new Schema({
     type: String,
     required: true,
     unique: true
+  },
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
   }
 })
 

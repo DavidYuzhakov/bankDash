@@ -41,7 +41,7 @@ input[type=checkbox] + label:after {
   left: 6px;
   z-index: 1;
 
-  background: url('../shared/assets/icons/check.svg') no-repeat;
+  background: url('../../shared/assets/icons/check.svg') no-repeat;
   background-size: 12px 9px;
   opacity: 0;
   scale: 0.5;

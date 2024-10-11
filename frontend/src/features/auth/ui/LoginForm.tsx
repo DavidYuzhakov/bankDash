@@ -8,15 +8,15 @@ import { Button } from 'shared/ui'
 import useAlertStore from 'shared/ui/Alert/store'
 
 import { LoginFormValues } from '../model/types'
-import { login } from '../api/login'
-import { useAuthStore } from '../model'
+import { login } from '../../../shared/api/endpoints/login'
 import { AxiosError } from 'axios'
+import useAuthStore from '../model/store'
 
 export function LoginForm() {
   const navigate = useNavigate()
+  const setIsAuth = useAuthStore(state => state.setIsAuth)
   const [showPassword, setShowPassword] = useState(false)
   const showAlert = useAlertStore((state) => state.showAlert)
-  const loginToken = useAuthStore(state => state.login)
 
   const {
     register,
@@ -28,9 +28,9 @@ export function LoginForm() {
 
   const onSubmit: SubmitHandler<LoginFormValues> = async (body) => {
     try {
-      const { token } = await login(body)
-      loginToken(token)
-      showAlert('success', 'The login was completed successfully')
+      const { data } = await login(body)
+      showAlert('success', data.message ?? 'The login was completed successfully')
+      setIsAuth(true)
       navigate('/')
     } catch (e: unknown) {
       console.log(e)

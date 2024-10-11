@@ -1,3 +1,4 @@
+import { logout } from "shared/api"
 import { CardsWidget } from "widgets/my-cards"
 import { RecentTransWidget } from "widgets/recent-transactions"
 

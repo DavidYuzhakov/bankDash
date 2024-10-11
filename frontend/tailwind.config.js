@@ -13,6 +13,9 @@ export default {
         'lato': "Lato",
         'inter': "Inter"
       },
+      boxShadow: {
+        'border': 'inset 10px 10px 0px 10px #f00'
+      },
       colors: {
         'primary': '#232323',
         'secondary': '#B1B1B1',

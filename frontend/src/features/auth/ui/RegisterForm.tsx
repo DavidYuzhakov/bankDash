@@ -8,14 +8,14 @@ import { Button } from "shared/ui"
 import showImg from "shared/assets/icons/password-show.svg"
 import hideImg from "shared/assets/icons/password-hide.svg"
 
-import { useAuthStore } from "../model"
 import { RegisterFormValues } from "../model/types"
-import { registration } from "../api/register"
+import { registration } from "shared/api/endpoints/register"
+import useAuthStore from "../model/store"
 
 export function RegisteForm() {
   const navigate = useNavigate()
   const showAlert = useAlertStore((state) => state.showAlert)
-  const login = useAuthStore(state => state.login)
+  const setIsAuth = useAuthStore(state => state.setIsAuth)
   const [showPassword, setShowPassword] = useState(false)
 
   const {
@@ -34,9 +34,9 @@ export function RegisteForm() {
 
   const onSubmit: SubmitHandler<RegisterFormValues> = async (body: RegisterFormValues) => {
     try {
-      const { token } = await registration(body)
-      login(token)
-      showAlert('success', 'The account has been created')
+      const { data } = await registration(body)
+      showAlert('success', data.message ?? 'The account has been created')
+      setIsAuth(true)
       navigate('/')
     } catch (e: unknown) {
       console.log(e)
