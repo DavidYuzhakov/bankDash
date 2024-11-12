@@ -32,8 +32,8 @@ export function CardsWidget() {
               .map((card, i) => (
                 <Card key={card.number} {...card} isBlue={i === 0} />
               ))}
-        {error && <p className="text-error">{error}😔</p>}
-        {!(cards.length > 0) &&
+        {error && <p className="block text-error">{error}😔</p>}
+        {!(cards.length > 0 && !error) &&
           [...new Array(2)].map((_, i) => (
             <button key={i} onClick={() => navigate('/credit-cards')} className='bg-white rounded-lg w-[350px] h-[240px] p-2'>
               <span className='flex justify-center items-center border-dashed border-[2px] h-full border-b-gray text-secondary text-xl'>Add card <span className='text-3xl ml-2 -mt-1 leading-none'>+</span></span>

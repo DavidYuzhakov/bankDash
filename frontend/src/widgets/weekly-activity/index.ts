@@ -1,0 +1,1 @@
+export { WeeklyWidget } from "./ui/WeeklyWidget"

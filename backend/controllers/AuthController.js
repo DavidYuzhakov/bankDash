@@ -109,7 +109,7 @@ const check = async (req, res) => {
     await jwt.verify(accessToken, config.get('JWT_ACCESS_TOKEN'))
     res.json({ message: 'successfully authentificated'})
   } catch (err) {
-    console.log(err)
+    console.log(accessToken)
     res.status(403).json({
       message: 'No access'
     })

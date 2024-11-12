@@ -7,18 +7,18 @@ import { Navigate, Route, Routes } from "react-router-dom"
 import { check } from "shared/api"
 import { AuthLayout } from "widgets/auth-layout"
 import { MainLayout } from "widgets/main-layout"
-import loading from "shared/assets/images/load.webp"
+import loading from "shared/assets/icons/loading.svg"
 
 
 export const AppRoutes = () => {
   const isAuth = useAuthStore((state) => state.isAuth)
-  const setIsAuth = useAuthStore(state => state.setIsAuth)
-
   console.log(isAuth)
+  const setIsAuth = useAuthStore(state => state.setIsAuth)
 
   async function checkAuth () {
     try {
       await check()
+      console.log(isAuth)
       setIsAuth(true)
     } catch (err) {
       console.log(err)
@@ -33,7 +33,7 @@ export const AppRoutes = () => {
   if (isAuth === undefined) {
     return (
       <div className="bg-black/50 w-screen h-screen flex justify-center items-center">
-        <img width={50} src={loading} alt="loading..." />
+        <img className="animate-spin" width={50} src={loading} alt="loading..." />
       </div>
     )
   }

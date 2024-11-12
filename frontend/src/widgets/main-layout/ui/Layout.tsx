@@ -8,7 +8,7 @@ export function MainLayout () {
       <Sidebar />
       <div className="flex-grow h-full">
         <Header />
-        <main className="px-10 py-[30px]">
+        <main className="px-10 py-[30px] flex flex-col gap-6">
           <Outlet />
         </main>
       </div>

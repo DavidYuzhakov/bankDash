@@ -33,7 +33,7 @@ export function Sidebar () {
   }, [path])
 
   return (
-    <aside className="max-w-[250px] w-full border-r border-b-gray bg-white h-screen py-9 flex flex-col items-center">
+    <aside className="max-w-[250px] w-full border-r border-b-gray bg-white  py-9 flex flex-col items-center">
       <Link to={'/'} className="flex gap-2 items-center mb-12">
         <img src={logo} alt='logo' />
         <h4 className="text-title text-2xl font-black ">BankDash.</h4>

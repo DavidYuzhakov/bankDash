@@ -21,6 +21,7 @@ instance.interceptors.response.use(
         return await instance(originalRequest)
       } catch (tokenError) {
         console.log('Token refresh failed', tokenError)
+        return Promise.reject(tokenError)
       }
     }
   }

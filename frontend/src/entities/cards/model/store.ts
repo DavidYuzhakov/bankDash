@@ -10,8 +10,9 @@ const useCardStore = create<State & Action>(set => ({
   getCards: async () => {
     set({ loading: true })
     try {
-      const { data } = await axios.get<Card[]>('/card/list') 
-      set({ cards: data })
+      const result = await axios.get<Card[]>('/card/list')
+      // console.log(result)
+      set({ cards: result.data })
     } catch (err) {
       if (err instanceof AxiosError) {
         console.log('Failed to get cards', err)
